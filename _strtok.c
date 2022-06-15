@@ -6,7 +6,7 @@
  * Return: Always 0
  */
 
-int main (void)
+int main(void)
 {
 	char str[80] = "This is - www.tutorialspoint.com - website";
 	const char s[2] = "-";
@@ -16,20 +16,21 @@ int main (void)
 	token = _strtok(str, s);
 
 	/* walk through other tokens */
-	while( token != NULL ) {
-		printf( " %s\n", token );
+	while (token != NULL)
+	{
+		printf(" %s\n", token);
 
 		token = _strtok(NULL, s);
 	}
 
-	return(0);
+	return (0);
 }
 
 /**
- * _strtok - 
- * @str:
- * @delim:
- * Return:
+ * _strtok - Strtok
+ * @str: Pointer to a string
+ * @delim: Delim
+ * Return: Always 0
  */
 
 char *_strtok(char *str, const char *delim)
@@ -39,16 +40,15 @@ char *_strtok(char *str, const char *delim)
 	while (str[len] == NULL || str[len] == *delim)
 		len++;
 
-	
 	token = malloc(sizeof(char) * len);
 	if (token == NULL)
 	{
 		free(token);
-		return NULL;
+		return (NULL);
 	}
 
 	for (; i < len; i++)
 		token = str[i];
 
-	return token;
+	return (token);
 }
