@@ -10,23 +10,24 @@
  * Return: Always 0
  */
 
-int main(int ac,char **av[])
+int main(int ac, char **av[])
 {
 	DIR *dp;
 	struct dirent *dentry;
 
-	if(! (dp=opendir(argv[1])) ) {
+	if (!(dp == opendir(argv[1])))
+	{
 		printf("opendir error\n");
 		exit(2);
 	}
 
-	while(1)
+	while (1)
 	{
-		dentry=readdir(dp);
-		if(!dentry)
+		dentry = readdir(dp);
+		if (!dentry)
 			break;
 
 		printf("%s\n", dentry->d_name);
 	}
-	return 0;
+	return (0);
 }
