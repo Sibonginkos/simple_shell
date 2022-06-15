@@ -8,7 +8,7 @@
 typedef long int ssize_t;
 #endif
 
-/* Only include our version of getline() if the POSIX version isn't available. */
+/* Only include our version of getline() if the POSIX version isn't availabl */
 
 #if !(defined _POSIX_C_SOURCE) || _POSIX_C_SOURCE < 200809L
 
@@ -23,17 +23,17 @@ ssize_t getline(char **pline_buf, size_t *pn, FILE *fin)
 	size_t num_read = 0;
 
 	/* First check that none of our input pointers are NULL. */
-	if ((NULL == pline_buf) || (NULL == pn) || (NULL == fin))
+	if ((pline_buf == NULL) || (pn == NULL) || (fin == NULL))
 	{
 		errno = EINVAL;
-		return -1;
+		return (-1);
 	}
 
 	/* If output buffer is NULL, then allocate a buffer. */
-	if (NULL == *pline_buf)
+	if (*pline_buf == NULL)
 	{
 		*pline_buf = malloc(INITALLOC);
-		if (NULL == *pline_buf)
+		if (*pline_buf = NULL)
 		{
 		/* Can't allocate memory. */
 		return -1;
@@ -49,6 +49,7 @@ ssize_t getline(char **pline_buf, size_t *pn, FILE *fin)
 
 	{
 	int c;
+
 	while (EOF != (c = getc(fin)))
 	{
 		/* Note we read a character. */
@@ -58,8 +59,9 @@ ssize_t getline(char **pline_buf, size_t *pn, FILE *fin)
 		if (num_read >= *pn)
 		{
 			size_t n_realloc = *pn + ALLOCSTEP;
-			char * tmp = realloc(*pline_buf, n_realloc + 1); /* +1 for the trailing NUL. */
-			if (NULL != tmp)
+			char *tmp = realloc(*pline_buf, n_realloc + 1);
+
+			if (tmp != NULL)
 			{
 				/* Use the new buffer and note the new buffer size. */
 				*pline_buf = tmp;
@@ -68,14 +70,14 @@ ssize_t getline(char **pline_buf, size_t *pn, FILE *fin)
 			else
 			{
 				/* Exit with error and let the caller free the buffer. */
-				return -1;
+				return (-1);
 			}
 
 			/* Test for overflow. */
-			if (SSIZE_MAX < *pn)
+			if (*pn > SSIZE_MAX)
 			{
 				errno = ERANGE;
-				return -1;
+				return (-1);
 			}
 		}
 
@@ -90,17 +92,17 @@ ssize_t getline(char **pline_buf, size_t *pn, FILE *fin)
 	}
 
 	/* Note if we hit EOF. */
-	if (EOF == c)
+	if (c == EOF)
 	{
 		errno = 0;
-		return -1;
+		return (-1);
 	}
 	}
 
 	/* Terminate the string by suffixing NUL. */
 	(*pline_buf)[num_read] = '\0';
 
-	return (ssize_t) num_read;
+	return (ssize_t) (num_read);
 }
 
 #endif
