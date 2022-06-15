@@ -5,7 +5,8 @@
 
 /**
  * main - stat example
- *
+ * @ac: Argument count
+ * @av: Argument vector
  * Return: Always 0.
  */
 
