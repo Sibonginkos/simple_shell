@@ -24,7 +24,7 @@ int main(void)
 	characters = getline(&buffer, &bufsize, stdin);
 	printf("   %zu   \n", characters);
 
-	buffer[strlen(buffer) -1] = '\0';
+	buffer[strlen(buffer) - 1] = '\0';
 	printf("miralo:    %s", buffer);
 
 	/* get the first token */
