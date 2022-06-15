@@ -10,23 +10,17 @@
 int main(void)
 {
 	unsigned int my_pid;
-	unsigned int child_pid;
+	unsigned int pid;
 
-	child_pid = fork();
-	if (child_pid == -1)
+	printf("Before fork\n");
+	pid = fork();
+	if (pid == -1)
 	{
 		perror("Error:");
 		return (1);
 	}
+	printf("After fork\n");
 	my_pid = getpid();
 	printf("My pid is %u\n", my_pid);
-	if (child_pid == 0)
-	{
-		printf("(%u) Nooooooooo!\n", my_pid);
-	}
-	else
-	{
-		printf("(%u) %u, I am your father\n", my_pid, child_pid);
-	}
 	return (0);
 }
