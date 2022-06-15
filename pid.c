@@ -6,11 +6,12 @@
  *
  * Return: Always 0.
  */
+
 int main(void)
 {
-    unsigned int my_pid;
+	unsigned int my_pid;
 
-    my_pid = getpid();
-    printf("%u\n", my_pid);
-    return (0);
+	my_pid = getpid();
+	printf("%u\n", my_pid);
+	return (0);
 }
