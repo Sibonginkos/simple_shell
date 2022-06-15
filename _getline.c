@@ -16,6 +16,14 @@ typedef long int ssize_t;
 #define SSIZE_MAX (SIZE_MAX >> 1)
 #endif
 
+/**
+ * getline - Gets line
+ * @pline_buf: Line buffer
+ * @pn: PN
+ * @fin: Fin
+ * Return: ssize_t
+ */
+
 ssize_t getline(char **pline_buf, size_t *pn, FILE *fin)
 {
 	const size_t INITALLOC = 16;
@@ -33,10 +41,10 @@ ssize_t getline(char **pline_buf, size_t *pn, FILE *fin)
 	if (*pline_buf == NULL)
 	{
 		*pline_buf = malloc(INITALLOC);
-		if (*pline_buf = NULL)
+		if (*pline_buf == NULL)
 		{
 		/* Can't allocate memory. */
-		return -1;
+		return (-1);
 		}
 	else
 	{
@@ -102,7 +110,7 @@ ssize_t getline(char **pline_buf, size_t *pn, FILE *fin)
 	/* Terminate the string by suffixing NUL. */
 	(*pline_buf)[num_read] = '\0';
 
-	return (ssize_t) (num_read);
+	return (ssize_t);
 }
 
 #endif
