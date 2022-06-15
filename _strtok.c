@@ -1,6 +1,11 @@
 #include <string.h>
 #include <stdio.h>
 
+/**
+ * main - Entry point
+ * Return: Always 0
+ */
+
 int main (void)
 {
 	char str[80] = "This is - www.tutorialspoint.com - website";
@@ -19,6 +24,13 @@ int main (void)
 
 	return(0);
 }
+
+/**
+ * _strtok - 
+ * @str:
+ * @delim:
+ * Return:
+ */
 
 char *_strtok(char *str, const char *delim)
 {
